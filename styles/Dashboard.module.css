@@ -1,0 +1,14 @@
+.main-container {
+  display: grid;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  grid-template-columns: 1fr 3fr;
+}
+.main-section {
+  border: 1px solid red;
+}
+.navigation-wrapper {
+  padding-left: 3em;
+  border: 1px solid blue;
+}

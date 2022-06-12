@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nama Aplikasi
 
-## Getting Started
+Online Cutomer Service Apps with Video Chat Features
+<br />
+<br />
 
-First, run the development server:
+## Development and Production Team
+* Sam Zuhal Setiawan (Backend Developer and Team Leader)
+* Muhammad Arya Nugraha Darma (UI/UX Designer for Web Desktop)
+* Muhammad Khusnul Hidayat (UI/UX Designer for Web Mobile)
+* Indra Parlindungan Hutahean (Frontend Developer)
+* Muhammad Dwiky Reza (Frontend Developer)
 
+## Application stack and Technology used
+* HTML, CSS, and Javascript
+* Next JS (React JS Framework)
+* Figma
+
+<hr />
+<br />
+
+## **How to contribute**
+Follow this instruction below:
+## Prerequisite
+Make sure you have this following things: 
+1. Git (install on your PC)
+2. Github Account
+
+## Clone this repository to your local repository
+1. Open your comand prompt
+2. Navigate to where you want to save this project
+3. Run
+   ```bash
+   git clone https://github.com/samzuhalsetiawan/online-customer-service
+   ```
+4. Wait for downloading complete, then you can make changes to this repository
+
+Here's some example comand using CMD and save to Desktop on Windows:
 ```bash
-npm run dev
-# or
-yarn dev
+cd Desktop
+git clone https://github.com/samzuhalsetiawan/online-customer-service
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Upload your changes to github
+1. Open your comand prompt
+2. Navigate to inside project directory
+   ```bash
+    cd online-customer-service
+   ```
+3. Make sure you already set your git username and email. if you done before, you can skip to step number 5.
+4. to configure username and email for git, run this commad:
+   ```bash
+    git config --global user.name "your github username"
+    git config --global user.email "your email regitered on github"
+   ```
+5. Commit your changes by running this commad:
+   ```bash
+    git add .
+    git commit -m "your changes description"
+   ```
+6. upload (push) your sorce code to github by running this commad:
+   ```bash
+    git push origin main
+   ```
+7. Done, now wait for team leader approved your changes.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<hr />
+<br />
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## **How to run this application**
+This application develop by using Next JS (React JS Framework)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Prerequisite
+* Node JS
+* Browser (Recomended: Google Chrome or Microsoft Edge)
 
-## Learn More
+## Installation
+1. Download or Clone this repository (you can see the instruction above)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to run
+1. Open your command prompt
+2. navigate to repository you already clone or downloded
+   ```bash
+    cd online-customer-service
+   ```
+3. start development server by running:
+   ```bash
+   npm run dev
+   ```
+4. Open in browser [http://localhost:3000](http://localhost:3000)

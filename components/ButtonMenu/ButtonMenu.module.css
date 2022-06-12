@@ -1,0 +1,18 @@
+.main-container {
+  padding: 1em 2em;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-dark-color);
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.main-container.active {
+  color: var(--inner-background-color);
+  background-color: var(--primary-color);
+}
