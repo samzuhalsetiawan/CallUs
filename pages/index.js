@@ -16,7 +16,6 @@ export default function Dashboard() {
   const drawerController = (open) => {
     mainNavigation.current.style.left = open ? "-80%" : "0px";
     overlay.current.classList.toggle(styles['hide']);
-    // applicationBrandDrawer.current.classList.toggle(styles['hide']);
   }
   return (
     <div className={styles['main-container']}>
