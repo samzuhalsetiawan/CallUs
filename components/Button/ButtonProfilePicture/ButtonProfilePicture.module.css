@@ -1,0 +1,16 @@
+.main-container {
+  aspect-ratio: 1/1;
+  height: 3em;
+  border: none;
+  outline: none;
+  background: linear-gradient(161.47deg, #003FBB -2.85%, #0361FE 49.44%, #03CDFF 97.55%);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.main-container img {
+  padding: 0px;
+  margin: 0px;
+  transform: translate(-1px, 1px) scale(0.8, 0.8);
+  object-fit: cover;
+  object-position: center;
+}

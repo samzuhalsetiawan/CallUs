@@ -1,0 +1,68 @@
+.main-container {
+  background-color: var(--inner-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 1em 2em;
+  gap: 1em;
+}
+
+.main-container img {
+  width: 4em;
+}
+
+.main-container h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin: 0.5em 0px;
+}
+.description {
+  display: grid;
+  grid-template-areas:
+      'cs time'
+      'user kosong';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.description > div {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+.cs svg,
+.time svg {
+  transform: scale(0.6, 0.6);
+}
+.user svg {
+  margin: 0px 0.8em;
+  transform: scale(1.2, 1.2);
+}
+.cs span,
+.time span,
+.user span {
+  font-size: 0.7em;
+}
+
+@media (max-width: 768px) {
+  .main-container h3 {
+    font-size: 1em;
+  }
+    .cs svg,
+    .time svg {
+      transform: scale(0.6, 0.6);
+    }
+    .user svg {
+      margin: 0px 0.8em;
+      transform: scale(1.2, 1.2);
+    }
+    .cs span,
+    .time span,
+    .user span {
+      font-size: 0.6em;
+    }
+}

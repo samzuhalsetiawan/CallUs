@@ -1,7 +1,10 @@
 .main-container {
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+}
+.main-container svg {
+  transform: scale(0.7, 0.7);
+  /* display: none; */
 }

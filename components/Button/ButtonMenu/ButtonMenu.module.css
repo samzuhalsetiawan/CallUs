@@ -1,15 +1,15 @@
 .main-container {
-  padding: 1em 2em;
+  padding: 0.5em 1em;
   outline: none;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   color: var(--text-dark-color);
   font-family: 'Poppins', sans-serif;
   background-color: transparent;
   font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.9em;
 }
 
 .main-container.active {
