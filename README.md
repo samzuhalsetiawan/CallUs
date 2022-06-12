@@ -17,7 +17,6 @@ Online Cutomer Service Apps with Video Chat Features
 * Figma
 
 <hr />
-<br />
 
 ## **How to contribute**
 Follow this instruction below:
@@ -40,6 +39,17 @@ Here's some example comand using CMD and save to Desktop on Windows:
 cd Desktop
 git clone https://github.com/samzuhalsetiawan/online-customer-service
 ```
+
+## Update your local project repository
+1. Open your comand prompt
+2. Navigate to inside project directory
+   ```bash
+    cd online-customer-service
+   ```
+3. Update by running:
+   ```bash
+   git pull origin
+   ```
 
 ## Upload your changes to github
 1. Open your comand prompt
@@ -65,7 +75,6 @@ git clone https://github.com/samzuhalsetiawan/online-customer-service
 7. Done, now wait for team leader approved your changes.
 
 <hr />
-<br />
 
 ## **How to run this application**
 This application develop by using Next JS (React JS Framework)
@@ -79,11 +88,11 @@ This application develop by using Next JS (React JS Framework)
 
 ## How to run
 1. Open your command prompt
-2. navigate to repository you already clone or downloded
+2. Navigate to repository you already clone or downloded
    ```bash
     cd online-customer-service
    ```
-3. start development server by running:
+3. Start development server by running:
    ```bash
    npm run dev
    ```
