@@ -1,0 +1,17 @@
+.main-container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 25;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: transparent;
+  max-width: 80vw;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5em;
+}

@@ -1,7 +1,7 @@
 import ButtonNormal from '../Button/ButtonNormal/ButtonNormal';
 import styles from './ProfileCard.module.css';
 
-export default function ProfileCard() {
+export default function ProfileCard({ children }) {
   return (
     <div className={styles['main-container']}>
       <div className={styles['profile-picture']}>
@@ -11,11 +11,9 @@ export default function ProfileCard() {
       </div>
       <h3>Sam Zuhal Setiawan</h3>
       <p>+6282250550032</p>
-      {/* <div className={styles['button-edit-profile']}>
-        <ButtonNormal>
-          Edit Profile
-        </ButtonNormal>
-      </div> */}
+      <div className={styles['optional-buttons']}>
+        {children}
+      </div>
     </div>
   )
 }
