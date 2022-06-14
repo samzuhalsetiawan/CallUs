@@ -4,17 +4,17 @@ import ProfileCard from '../../ProfileCard/ProfileCard';
 import styles from './DialogProfile.module.css';
 
 export default function DialogProfile({ myRef = useRef() }) {
-  const closeDialogModal = () => {
+  const closeDialogModal = (action) => {
     myRef.current.close();
   }
   return (
     <dialog ref={myRef} className={styles['main-container']}>
       <ProfileCard>
         <div className={styles['button-container']}>
-          <ButtonNormal ketikaDiKlik={closeDialogModal}>
+          <ButtonNormal ketikaDiKlik={() => {closeDialogModal("open-profile")}}>
             Open Profile
           </ButtonNormal>
-          <ButtonNormal ketikaDiKlik={closeDialogModal}>
+          <ButtonNormal ketikaDiKlik={() => {closeDialogModal("logout")}}>
             Logout
           </ButtonNormal>
         </div>

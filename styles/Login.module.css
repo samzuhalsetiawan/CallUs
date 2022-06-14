@@ -1,0 +1,57 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+}
+.app-logo-container {
+  margin-bottom: 2em;
+}
+.buttons-container ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 1em;
+}
+.buttons-container ul li {
+  list-style: none;
+}
+
+.buttons-container button {
+  padding: 1em 2em;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--inner-background-color);
+  width: 100%;
+}
+.buttons-container li:nth-child(1) button {
+  background-color: var(--primary-color);
+}
+.buttons-container li:nth-child(2) button {
+  background-color: var(--danger-color);
+}
+.buttons-container li:nth-child(3) button {
+  background-color: var(--success-color);
+}
+
+@media (max-width: 768px) {
+  .buttons-container ul {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+    .buttons-container ul button {
+      width: 100%;
+    }
+}
