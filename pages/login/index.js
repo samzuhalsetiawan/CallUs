@@ -22,13 +22,13 @@ const goToMainPage = () => {
         <div className={styles['buttons-container']}>
           <ul>
             <li>
-              <button>Masyarakat</button>
+              <button onClick={goToMainPage}>Masyarakat</button>
             </li>
             <li>
-              <button>Customer Service</button>
+              <button onClick={goToCustomerService}>Customer Service</button>
             </li>
             <li>
-              <button>Admin</button>
+              <button onClick={goToAdmin}>Admin</button>
             </li>
           </ul>
         </div>
