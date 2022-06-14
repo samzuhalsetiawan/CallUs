@@ -3,7 +3,7 @@ import ButtonNormal from '../../Button/ButtonNormal/ButtonNormal';
 import ProfileCard from '../../ProfileCard/ProfileCard';
 import styles from './DialogProfile.module.css';
 
-export default function DialogProfile({ myRef = useRef() }) {
+export default function DialogProfile({ myRef }) {
   const closeDialogModal = (action) => {
     myRef.current.close();
   }
