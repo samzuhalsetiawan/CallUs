@@ -107,15 +107,6 @@
   font-size: 0.9rem;
 }
 
-.detail-left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.5em;
-  margin-right: 0.5rem;
-}
-
 .status-operasi {
   display: flex;
   justify-content: flex-start;
@@ -132,20 +123,30 @@
   background-color: var(--inner-background-color);
 }
 
-.detail-right-section {
+.detail-right-section,
+.detail-left-section {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
+.detail-left-section>div,
 .detail-right-section>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.detail-left-section>div {
+  margin-right: 0.5rem;
+}
+
+.detail-right-section>div {
   margin-left: 0.5rem;
 }
 
+.detail-left-section>div>span:nth-child(2),
 .detail-right-section>div>span:nth-child(2) {
   font-size: 2em;
 }
@@ -208,6 +209,60 @@
   width: 1px;
   background-color: var(--inner-background-color);
 }
+.dialog-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: none;
+  color: var(--inner-background-color);
+}
+
+.dialog-container form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: var(--linear-primary-color);
+}
+
+.dialog-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.dialog-button-container button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-button-container button svg {
+  transform: scale(0.7, 0.7);
+  transition: 0.3s;
+}
+
+.dialog-button-container button svg:hover {
+  transform: scale(0.7, 0.7) translateY(-1rem);
+}
+
+.dialog-button-container button svg:active {
+  transform: scale(0.7, 0.7) translateY(-1rem);
+}
+
+.dialog-button-container button span {
+  color: var(--inner-background-color);
+}
 
 @media (max-width: 768px) {
   .main-navigation {
@@ -258,11 +313,12 @@
     font-size: 0.8rem;
   }
 
+  .detail-left-section svg,
   .detail-right-section svg {
     display: none;
   }
 
-  .detail-left-section {
+  .detail-left-section>div {
     margin-right: 0px;
   }
 
@@ -277,10 +333,6 @@
   .detail-container {
     width: 100vw;
     border-radius: 0px;
-  }
-
-  .detail-left-section {
-    align-items: center;
   }
 
   .status-operasi {

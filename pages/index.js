@@ -153,7 +153,7 @@ export default function Dashboard({ instansi }) {
           </div>
           <div className={styles['lp-cards-container']}>
             <div>
-              <AddInstansiCard handler={goToDaftar} />
+              <AddInstansiCard handler={() => {}} />
               {instansi.map(instansi => {
                 return <LpCard key={instansi.namaInstansi} instansi={{
                   ...instansi,
@@ -173,6 +173,7 @@ export default function Dashboard({ instansi }) {
           <form method='dialog'>
             <label htmlFor="emai-input">Masukan email anda yang didaftarkan admin</label>
             <input id='emai-input' ref={emailInputRef} type="text" placeholder='Masukan email anda . . .' />
+            <p className={styles['pengujian-p']}>*Gunakan email admin1@test.com (untuk pengujian)</p>
             <div className={styles['dialog-action-button']}>
               <button onClick={goToCostumerServiceDashboard}>Submit</button>
               <button>Kembali</button>

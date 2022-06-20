@@ -10,6 +10,10 @@ export default class CustomerServiceManager {
    * @type {Set<CustomerService>}
    */
   #listCustomerService = new Set();
+  /**
+   * @type {number}
+   */
+  onlineCount = 0;
   constructor() {
     this.#uid = uuidV4();
   }

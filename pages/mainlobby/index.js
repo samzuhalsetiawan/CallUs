@@ -16,9 +16,9 @@ export default function MainLobby() {
   
   const getUserStream = async () => {
     let _localStream = new MediaStream();
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    const [ track ] = stream.getVideoTracks();
-    _localStream.addTrack(track);
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    const tracks = stream.getTracks();
+    tracks.forEach(track => { _localStream.addTrack(track) });
     setGlobalContext({
       ...globalContext,
       localStream: _localStream
@@ -30,6 +30,7 @@ export default function MainLobby() {
     const videoLocalElement = videoLocalElementRef.current;
     videoLocalElement.srcObject = _localStream;
     videoLocalElement.onloadedmetadata = () => {
+      videoLocalElement.muted = true;
       videoLocalElement.play();
     }
     globalContext.socket.emit("calling-for-calling", { from: globalContext.socket.id, to: cs });
@@ -55,6 +56,7 @@ export default function MainLobby() {
         const videoRemoteElement = videoRemoteElementRef.current;
         videoRemoteElement.srcObject = remoteStream;
         videoRemoteElement.onloadedmetadata = () => {
+          videoRemoteElement.muted = false;
           videoRemoteElement.play();
         }
       });

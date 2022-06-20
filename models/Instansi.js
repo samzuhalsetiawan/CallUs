@@ -4,6 +4,7 @@ import { v4 as uuidV4 } from 'uuid';
 import Admin from "./Admin";
 import Customer from './Customer'
 import CustomerService from "./CustomerService";
+import ConnectionManager from "../controller/ConnectionManager";
 
 export default class Instansi {
   /**
@@ -31,10 +32,11 @@ export default class Instansi {
    * @param {string} nama Nama Instansi
    * @param {Admin} admin Administrator
    */
-  constructor(nama, admin) {
+  constructor(nama, imgUrl, admin) {
     this.#nama = nama;
     this.#admin = admin;
     this.#uid = uuidV4();
+    this.imgUrl = imgUrl;
   }
   getUid() {
     return this.#uid;
@@ -52,7 +54,9 @@ export default class Instansi {
     return this.#antrianManager.getAllCustomer();
   }
   createCustomer(username) {
-    return this.#antrianManager.createCustomer(username);
+    const customer = this.#antrianManager.createCustomer(username);
+    ConnectionManager.io.to(this.getNamaInstansi()).emit("update-antrian", this.getPanjangAntrian());
+    return customer;
   }
   getAllCustomerService() {
     return this.#customerServiceManager.getAllCustomerService();
@@ -77,6 +81,9 @@ export default class Instansi {
   addCustomerService(nama, email) {
     const newCustomerService = this.#createCustomerService(nama, email);
     this.#customerServiceManager.addCustomerService(newCustomerService);
+    if (ConnectionManager.io) {
+      ConnectionManager.io.to(this.getNamaInstansi).emit("update-total-cs", this.#customerServiceManager.getAllCustomerService().size);
+    }
   }
   /**
    * 
@@ -127,6 +134,7 @@ export default class Instansi {
   confirmCustomerTerlayani(nomorAntrian) {
     const customer = this.getCustomerByNomorAntrian(nomorAntrian);
     this.#incrementTotalCustomerTerlayani();
+    ConnectionManager.io.to(this.getNamaInstansi()).emit("update-terlayani", this.getTotalCustomerTerlayani());
     return this.#deleteCostumer(customer);
   }
   /**
@@ -135,5 +143,17 @@ export default class Instansi {
    */
   #deleteCostumer(customer) {
     return this.#antrianManager.deleteCustomer(customer);
+  }
+  getOnlineCSCount() {
+    return this.#customerServiceManager.onlineCount;
+  }
+  /**
+   * 
+   * @param {number} number 
+   * @returns 
+   */
+  setOnlineCSCount(number) {
+    this.#customerServiceManager.onlineCount = number;
+    return this.#customerServiceManager.onlineCount;
   }
 }

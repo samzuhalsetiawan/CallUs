@@ -141,6 +141,10 @@
 .dialog-action-button button:nth-child(2) {
   background-color: var(--danger-color);
 }
+.pengujian-p {
+  font-size: 0.7rem;
+  color: var(--secondary-color);
+}
 
 /* for Mobile */
 @media (max-width: 768px) {

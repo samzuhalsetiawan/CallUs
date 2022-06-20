@@ -33,9 +33,9 @@ export default class InstansiManager {
    * @param {Admin} admin
    * @return {Instansi}
    */
-  static createInstansi(nama, admin) {
+  static createInstansi(nama, imgUrl, admin) {
     if (this.getInstansiByName(nama)) return;
-    const newInstansi = new Instansi(nama, admin);
+    const newInstansi = new Instansi(nama, imgUrl, admin);
     admin.addInstansi(newInstansi);
     this.#addInstansi(newInstansi);
     return newInstansi;
@@ -58,29 +58,211 @@ export default class InstansiManager {
 //////////////////////////////////////////////////
 // for development purpose only
 ///////////////////////////////////////////////////
-const dummyinstansi = {
-  namaInstansi: "SamZ Group",
-  namaAdmin: "SamZ",
-  emailAdmin: "sam@test.com",
-  customerServices: [
-    {
-      nama: "cs1",
-      email: "cs1@test.com"
-    },
-    {
-      nama: "cs2",
-      email: "cs2@test.com"
-    }
-  ]
-}
-const admin = new Admin(dummyinstansi.namaAdmin, dummyinstansi.emailAdmin);
-const instansi = InstansiManager.createInstansi(dummyinstansi.namaInstansi, admin);
-if (instansi) {
-  dummyinstansi.customerServices.forEach(customerService => {
-    const { nama, email } = customerService;
-    instansi.addCustomerService(nama, email);
-  });
-}
+const dummyinstansis = [
+  {
+    namaInstansi: "Kementrian Tenaga Kerja",
+    imgUrl: "/img0.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  },
+  {
+    namaInstansi: "Puskesmas Karang Rejo",
+    imgUrl: "/img1.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  },
+  {
+    namaInstansi: "Kelurahan Sempaja",
+    imgUrl: "/img2.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  },
+  {
+    namaInstansi: "Xiaomi Service Center",
+    imgUrl: "/img3.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  },
+  {
+    namaInstansi: "Kominfo",
+    imgUrl: "/img4.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  },
+  {
+    namaInstansi: "Kemendikbud",
+    imgUrl: "/img5.png",
+    namaAdmin: "Admin",
+    emailAdmin: "admin@test.com",
+    customerServices: [
+      {
+        nama: "Adam Buana",
+        email: "admin1@test.com"
+      },
+      {
+        nama: "Agus Prawito",
+        email: "admin2@test.com"
+      },
+      {
+        nama: "Cahyono",
+        email: "admin3@test.com"
+      },
+      {
+        nama: "Bagus Budi",
+        email: "admin4@test.com"
+      },
+      {
+        nama: "Eka Putri",
+        email: "admin5@test.com"
+      },
+      {
+        nama: "Rayhan",
+        email: "admin6@test.com"
+      }
+    ]
+  }
+] 
+
+dummyinstansis.forEach(dummyinstansi => {
+  const admin = new Admin(dummyinstansi.namaAdmin, dummyinstansi.emailAdmin);
+  const instansi = InstansiManager.createInstansi(dummyinstansi.namaInstansi, dummyinstansi.imgUrl, admin);
+  if (instansi) {
+    dummyinstansi.customerServices.forEach(customerService => {
+      const { nama, email } = customerService;
+      instansi.addCustomerService(nama, email);
+    });
+  }
+});
 ////////////////////////////////////////////////////
 // End of for Development purpose only
 ////////////////////////////////////////////////////

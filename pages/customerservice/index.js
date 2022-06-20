@@ -11,25 +11,28 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
   const videoRemoteElementRef = useRef();
   const btnKirimPesanRef = useRef();
   const inputMessageRef = useRef();
+  const btnNextCustomer = useRef();
+  const btnAkhiri = useRef();
   const [ peer, setPeer ] = useState();
   const [ nomorAntrian, setNomorAntrian ] = useState(); 
   const [ remoteSocketId, setRemoteSocketId ] = useState();
 
   const getLocalStream = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
     const localStream = new MediaStream();
     setGlobalContext({
       ...globalContext,
       localStream
     });
-    const [ track ] = stream.getVideoTracks();
-    localStream.addTrack(track);
+    const tracks = stream.getTracks();
+    tracks.forEach(track => { localStream.addTrack(track) });
     /**
      * @type {HTMLVideoElement}
      */
     const videoElement = videoLocalElementRef.current;
     videoElement.srcObject = localStream;
     videoElement.onloadedmetadata = () => {
+      videoElement.muted = true;
       videoElement.play();
     }
   }
@@ -90,12 +93,19 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
       const videoRemoteElement = videoRemoteElementRef.current;
       videoRemoteElement.srcObject = remoteStream;
       videoRemoteElement.onloadedmetadata = () => {
+        videoRemoteElement.muted = false;
         videoRemoteElement.play();
       }
     });
   }
 
+  useEffect(() => {
+    btnAkhiri.current.style.display = "none";
+  }, []);
+
   const akhiriPelayanan = async () => {
+    btnAkhiri.current.style.display = "none";
+    btnNextCustomer.current.style.display = "block";
     /**
      * @type {HTMLVideoElement}
      */
@@ -122,10 +132,8 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
   }
 
   const telponSelanjutnya = async () => {
-    // if (remoteSocketId) {
-    //   const r = await akhiriPelayanan();
-    //   console.log(r);
-    // }
+    btnNextCustomer.current.style.display = "none";
+    btnAkhiri.current.style.display = "block";
     const response = await fetch(`/api/nextcustomer?instansi=${namainstansi}`);
     const data = await response.json();
     if (response.status === 500) {
@@ -184,7 +192,8 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
             </div>
           </div>
           <div className={styles['button-container']}>
-            <button onClick={telponSelanjutnya} className={styles['btn-next-customer']}>Customer Selanjutnya</button>
+            <button ref={btnNextCustomer} onClick={telponSelanjutnya} className={styles['btn-next-customer']}>Customer Selanjutnya</button>
+            <button ref={btnAkhiri} onClick={akhiriPelayanan} className={styles['btn-next-customer']}>Akhiri Pelayanan</button>
           </div>
         </div>
       </div>

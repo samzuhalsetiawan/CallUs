@@ -1,8 +1,10 @@
 import { Server } from 'socket.io';
+import ConnectionManager from '../../../controller/ConnectionManager';
 
 export default function handler(req, res) {
   if (!res.socket.server.io) {
     const io = new Server(res.socket.server);
+    ConnectionManager.io = io;
     res.socket.server.io = io;
     io.on("connection", socket => {
       console.log("[socket api] Socket Connected!: " + socket.id);
@@ -25,6 +27,9 @@ export default function handler(req, res) {
       socket.on("new-message", ({ from, to, message }) => {
         const remoteSocket = io.sockets.sockets.get(to);
         remoteSocket.emit("new-message", { from, to, message })
+      });
+      socket.on("join-room", namaInstansi => {
+        socket.join(namaInstansi);
       });
     });
   }

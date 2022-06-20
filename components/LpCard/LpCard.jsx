@@ -13,7 +13,7 @@ export default function LpCard({ instansi }) {
     <div ref={outerContainerRef} className={`${styles['outer-container']}`} onClick={mainCardClickHandler}>
       <div className={styles['main-container']}>
         <div className={styles['lp-picture']}>
-          <img src="/lp_icon.png" alt="lp icon" />
+          <img src={instansi.imgUrl || "/lp_icon.png"} alt="lp icon" />
         </div>
         <div className={styles['main-content']}>
           <h3>{instansi.namaInstansi}</h3>
