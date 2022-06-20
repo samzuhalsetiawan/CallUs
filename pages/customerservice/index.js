@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../../src/context/GlobalContext";
+import styles from '../../styles/CustomerService.module.css';
 
 export default function CustomerServiceDashboard({ panjangAntrian, totalCustomerTerlayani, error }) {
   const router = useRouter();
@@ -8,6 +9,8 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
   const { globalContext, setGlobalContext } = useAppContext();
   const videoLocalElementRef = useRef();
   const videoRemoteElementRef = useRef();
+  const btnKirimPesanRef = useRef();
+  const inputMessageRef = useRef();
   const [ peer, setPeer ] = useState();
   const [ nomorAntrian, setNomorAntrian ] = useState(); 
   const [ remoteSocketId, setRemoteSocketId ] = useState();
@@ -59,6 +62,15 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
         console.log("[CustomerService] Gagal menambahkan peerID: " + error);
       }
     });
+    globalContext.socket.on("new-message", ({ from, to, message }) => {
+      const containerDiv = document.createElement("div");
+      containerDiv.classList.add(styles["chat-content"]);
+      const bubbleChat = document.createElement("p");
+      bubbleChat.textContent = message;
+      containerDiv.appendChild(bubbleChat);
+      const container = document.getElementById("chat-box");
+      container.appendChild(containerDiv);
+    });
   }
 
   useEffect(() => { initializePeer() }, []);
@@ -102,6 +114,7 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
     });
     if (response.status === 200) {
       globalContext.socket.emit("pelayanan-selesai", { from: globalContext.socket.id, to: remoteSocketId });
+      setRemoteSocketId(null);
     } else {
       const data = await response.json();
       console.error(data.error); //TODO: Handle dengan benar
@@ -109,6 +122,10 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
   }
 
   const telponSelanjutnya = async () => {
+    // if (remoteSocketId) {
+    //   const r = await akhiriPelayanan();
+    //   console.log(r);
+    // }
     const response = await fetch(`/api/nextcustomer?instansi=${namainstansi}`);
     const data = await response.json();
     if (response.status === 500) {
@@ -134,26 +151,42 @@ export default function CustomerServiceDashboard({ panjangAntrian, totalCustomer
     }
   }
 
+  const kirimPesan = (pesan) => {
+    globalContext.socket.emit("new-message", { from: globalContext.socket.id, to: remoteSocketId, message: pesan });
+    const containerDiv = document.createElement("div");
+    containerDiv.classList.add(styles["chat-content"], styles['my-chat']);
+    const bubbleChat = document.createElement("p");
+    bubbleChat.textContent = pesan;
+    containerDiv.appendChild(bubbleChat);
+    const container = document.getElementById("chat-box");
+    container.appendChild(containerDiv);
+    inputMessageRef.current.value = "";
+  } 
+
   return (
-    <div>
-      {error ? error: ""}
-      <h1>Ini Dashboard Customer Service ({namainstansi})</h1>
-      <div>
-        <video ref={videoLocalElementRef} src="">Video Not Supported</video>
-      </div>
-      <div>
-        <video ref={videoRemoteElementRef} src="">Video Not Supported</video>
-      </div>
-      <div>
-        <p>Nama</p>
-        <p>{namacs}</p>
-      </div>
-      <div>
-        <button onClick={telponSelanjutnya}>Customer Selanjutnya</button>
-        <button onClick={akhiriPelayanan}>Akhiri Pelayanan</button>
-        <p>detail antrian</p>
-        <p>panjang antrian: {panjangAntrian}</p>
-        <p>customer terlayani: {totalCustomerTerlayani}</p>
+    <div className={styles['main-container']}>
+      <div className={styles['main-content']}>
+        <div className={styles["video-layer"]}>
+            <video ref={videoRemoteElementRef} className={styles['remote-video']}>Video Tidak didukung</video>
+            <video ref={videoLocalElementRef} className={styles['local-video']}>Video Tidak didukung</video>
+        </div>
+        <div className={styles["chat-layer"]}>
+          <h2>chat</h2>
+          <div id="chat-box" className={styles["chat-box"]}></div>
+          <div className={styles["tulis"]}>
+            <div className={styles['input-container']}>
+              <input ref={inputMessageRef} placeholder="Ketik Pesan.." type="text" id="tulis" />
+              <button onClick={() => kirimPesan(inputMessageRef.current.value)} ref={btnKirimPesanRef} type="submit">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="#0361FE"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div className={styles['button-container']}>
+            <button onClick={telponSelanjutnya} className={styles['btn-next-customer']}>Customer Selanjutnya</button>
+          </div>
+        </div>
       </div>
     </div>
   )

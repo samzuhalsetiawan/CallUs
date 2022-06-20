@@ -1,10 +1,10 @@
 import { useRouter } from "next/router"
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ApplicationBrand from "../../components/ApplicationBrand/ApplicationBrand";
 import ButtonHamburger from "../../components/Button/ButtonHumburger/ButtonHamburger";
 import NavigationPanel from "../../components/NavigationPanel/NavigationPanel";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import styles from './Lobby.module.css';
+import styles from '../../styles/Lobby.module.css';
 
 export default function Lobby() {
   const router = useRouter();
@@ -12,6 +12,7 @@ export default function Lobby() {
   const mainNavigation = useRef();
   const applicationBrandDrawer = useRef();
   const overlay = useRef();
+  const sectionRef = useRef();
   
   const drawerController = (open) => {
     mainNavigation.current.style.left = open ? "-80%" : "0px";
@@ -20,16 +21,15 @@ export default function Lobby() {
   
   const goToWaitingRoom = () => {
     const nama = inputName.current.value;
-    const namaInstansi = router.query.namainstansi; //TODO: Handle dengan benar
-    if (nama == "" || !nama) {
-      console.error("Nama Tidak Valid"); //TODO: Handle dengan benar
-    } else {
-      router.push({
-        pathname: '/waitingroom',
-        query: { nama, namainstansi: namaInstansi }
-      });
-    }
+    const namainstansi = router.query.namainstansi;
+    router.push({
+      pathname: '/waitingroom',
+      query: {
+        nama, namainstansi
+      }
+    })
   }
+
   return (
     <div className={styles['main-container']}>
       <div className={styles['hamburger-and-profile']}>
@@ -57,8 +57,8 @@ export default function Lobby() {
           <h3>Kementrian Tenaga Kerja</h3>
           <p><span>Selamat datang di kementrian tenaga kerja, </span>silahkan masukan nama dan ambil nomor antrian anda</p>
         </header>
-        <section>
-          <form onSubmit={e => e.preventDefault()}>
+        <section ref={sectionRef}>
+         <form onSubmit={e => e.preventDefault()}>
             <input ref={inputName} type="text" placeholder='Silahkan masukan nama anda' required={true} />
             <button type="submit" onClick={goToWaitingRoom} className={styles['btn-ambil-antrian']}>
               <svg width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">

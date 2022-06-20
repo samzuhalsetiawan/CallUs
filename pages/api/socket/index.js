@@ -21,7 +21,11 @@ export default function handler(req, res) {
       socket.on("pelayanan-selesai", ({ from, to }) => {
         const remoteSocket = io.sockets.sockets.get(to);
         remoteSocket.emit("pelayanan-selesai", { from, to });
-      })
+      });
+      socket.on("new-message", ({ from, to, message }) => {
+        const remoteSocket = io.sockets.sockets.get(to);
+        remoteSocket.emit("new-message", { from, to, message })
+      });
     });
   }
   res.status(200).json({ result: 'ok' });

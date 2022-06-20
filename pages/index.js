@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import { useAppContext } from '../src/context/GlobalContext';
-import styles from './Dashboard.module.css';
+import styles from '../styles/Dashboard.module.css';
 import LpCard from '../components/LpCard/LpCard';
 import DialogProfile from "../components/AlertDialog/DialogProfile/DialogProfile";
 import AddInstansiCard from '../components/AddInstansiCard/AddInstansiCard';
