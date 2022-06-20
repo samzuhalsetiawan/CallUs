@@ -1,7 +1,7 @@
 .main-container {
   background: linear-gradient(164.27deg, #003FBB -11.02%, #0361FE 44.03%, #03CDFF 105.13%);
   border-radius: 20px;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

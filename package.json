@@ -1,5 +1,5 @@
 {
-  "name": "online-customer-service",
+  "name": "online-customer-service2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "messagebird": "^3.8.0",
     "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "peerjs": "^1.4.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "8.17.0",

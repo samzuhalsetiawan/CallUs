@@ -13,6 +13,7 @@
   --success-color: #2FA869;
   --success-background-color: #BCEBB4;
   --secondary-dark-color: #BFC6D0;
+  --linear-primary-color: linear-gradient(139.23deg, #0361FE 0%, #03CDFF 108.57%);
 }
 
 *,
@@ -35,16 +36,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
 .rows-gravity-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .rows-gravity-left-center {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
 .icon-title {
   padding-left: 1rem;
+}
+
+.border-hitam {
+  border: 1px solid black;
 }

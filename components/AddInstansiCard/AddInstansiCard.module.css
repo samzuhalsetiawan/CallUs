@@ -1,0 +1,27 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 11rem;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  background-color: var(--inner-background-color);
+  cursor: pointer;
+}
+
+.add-sign {
+  position: relative;
+  aspect-ratio: 1 /1;
+  height: 4em;
+  width: 4em;
+  background: linear-gradient(139.23deg, #0361FE 0%, #03CDFF 108.57%);
+  border-radius: 50%;
+}
+
+.add-sign svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5, 0.5);
+}

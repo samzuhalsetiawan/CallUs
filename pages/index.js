@@ -1,3 +1,13 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react';
+import io from 'socket.io-client';
+import { useAppContext } from '../src/context/GlobalContext';
+import styles from './Dashboard.module.css';
+import LpCard from '../components/LpCard/LpCard';
+import DialogProfile from "../components/AlertDialog/DialogProfile/DialogProfile";
+import AddInstansiCard from '../components/AddInstansiCard/AddInstansiCard';
 import ApplicationBrand from "../components/ApplicationBrand/ApplicationBrand";
 import ButtonNotification from "../components/Button/ButtonNotification/ButtonNotification";
 import ButtonProfilePicture from "../components/Button/ButtonProfilePicture/ButtonProfilePicture";
@@ -5,18 +15,19 @@ import ButtonHamburger from '../components/Button/ButtonHumburger/ButtonHamburge
 import NavigationPanel from "../components/NavigationPanel/NavigationPanel";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import SearchBar from "../components/SearchBar/SearchBar";
-import styles from '../styles/Dashboard.module.css';
-import LpCard from "../components/LpCard/LpCard";
-import { useRef } from "react";
-import Head from "next/head";
-import DialogProfile from "../components/AlertDialog/DialogProfile/DialogProfile";
 
-export default function Dashboard() {
+export default function Dashboard({ instansi }) {
+  const router = useRouter();
+  const emailInputRef = useRef();
+  const dialogCSRef = useRef();
+  const instansiSelected = useRef();
+  const { globalContext, setGlobalContext } = useAppContext();
   const mainNavigation = useRef();
   const applicationBrandDrawer = useRef();
   const overlay = useRef();
   const buttonPopUpProfile = useRef();
   const dialogPopUpProfile = useRef();
+  
   const drawerController = (open) => {
     mainNavigation.current.style.left = open ? "-80%" : "0px";
     overlay.current.classList.toggle(styles['hide']);
@@ -34,6 +45,67 @@ export default function Dashboard() {
       console.log("Not Yet Implemented");
     }
   }
+  
+  const socketInitializer = async () => {
+      const response = await fetch('/api/socket');
+      if (response.status !== 200) {
+        console.error(response.statusText);
+        return;
+      }
+      if (!globalContext.socket) {
+        const socket = io();
+        socket.on("connect", () => {
+          setGlobalContext({ socket });
+          console.log("[Main Menu] Socket Connected: " + socket.id);
+        });
+      } 
+  }
+
+  useEffect(() => { socketInitializer() }, [])
+
+
+  const goToLobby = (namaInstansi) => {
+    router.push({
+      pathname: '/lobby',
+      query: {
+        namainstansi: namaInstansi
+      }
+    });
+  }
+  const goToDaftar = () => {
+    router.push('/daftar');
+  }
+  const openCsModal = (namaInstansi) => {
+    instansiSelected.current = namaInstansi;
+    dialogCSRef.current.showModal();
+  }
+  const goToCostumerServiceDashboard = async () => {
+    const email = emailInputRef.current.value;
+    const response = await fetch(`${location.origin}/api/verifikasiemailcs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        namaInstansi: instansiSelected.current,
+        email
+      })
+    });
+    const data = await response.json();
+    if (response.status === 500) {
+      console.log(data.error); //TODO: Handle dengan benar
+      return;
+    } else if (response.status === 200) {
+      router.push({
+        pathname: '/customerservice',
+        query: {
+          namacs: data.namaCS,
+          namainstansi: data.namaInstansi
+        }
+      })
+    }
+  }
+
   return (
     <>
       <Head>
@@ -81,19 +153,44 @@ export default function Dashboard() {
           </div>
           <div className={styles['lp-cards-container']}>
             <div>
-              <LpCard />
-              <LpCard />
-              <LpCard />
-              <LpCard />
-              <LpCard />
-              <LpCard />
-              <LpCard />
-              <LpCard />
+              <AddInstansiCard handler={goToDaftar} />
+              {instansi.map(instansi => {
+                return <LpCard key={instansi.namaInstansi} instansi={{
+                  ...instansi,
+                  btnCustomerServiceHandler: () => openCsModal(instansi.namaInstansi),
+                  btnCustomerHandler: () => goToLobby(instansi.namaInstansi)
+                }}/>
+              })}
             </div>
           </div>
         </div>
       </div>
       <DialogProfile myRef={dialogPopUpProfile}/>
-    </>
+
+      <dialog ref={dialogCSRef} className={styles['dialog-cs']}>
+        <div>
+          <h3>Customer Service</h3>
+          <form method='dialog'>
+            <label htmlFor="emai-input">Masukan email anda yang didaftarkan admin</label>
+            <input id='emai-input' ref={emailInputRef} type="text" placeholder='Masukan email anda . . .' />
+            <div className={styles['dialog-action-button']}>
+              <button onClick={goToCostumerServiceDashboard}>Submit</button>
+              <button>Kembali</button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+  </>
   )
+}
+
+export async function getServerSideProps(context) {
+  const req = context.req;
+  const response = await fetch(`${process.env.PROTOCOL || "http"}://${req.headers.host}/api/instansi`);
+  const data = await response.json();
+  return {
+    props: {
+      instansi: data.instansi
+    }
+  }
 }
