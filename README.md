@@ -1,4 +1,4 @@
-# Nama Aplikasi
+# CallUs
 
 Online Cutomer Service Apps with Video Chat Features
 <br />
@@ -13,7 +13,10 @@ Online Cutomer Service Apps with Video Chat Features
 
 ## Application stack and Technology used
 * HTML, CSS, and Javascript
-* Next JS (React JS Framework)
+* Firebase
+* NodeJS with ExpressJS
+* PeerJS
+* Socket IO
 * Figma
 
 <hr />
@@ -77,7 +80,7 @@ git clone https://github.com/samzuhalsetiawan/online-customer-service
 <hr />
 
 ## **How to run this application**
-This application develop by using Next JS (React JS Framework)
+
 
 ## Prerequisite
 * Node JS
@@ -94,6 +97,6 @@ This application develop by using Next JS (React JS Framework)
    ```
 3. Start development server by running:
    ```bash
-   npm run dev
+   node server
    ```
 4. Open in browser [http://localhost:3000](http://localhost:3000)
