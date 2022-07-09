@@ -1,0 +1,21 @@
+<dialog class='dialog-cs'>
+  <div>
+    <h3>Customer Service</h3>
+    <form method='dialog'>
+      <div class="send-verification-container">
+        <label for="email-input">Masukan nomor ponsel anda yang didaftarkan oleh admin</label>
+        <input id='phone-input' type="text" placeholder='Masukan no Handphone anda . . .' />
+        <div id="firebaseui-auth-container"></div>
+        <div class='dialog-action-button'>
+          <button id="dialog-cs-btn-send-verif">Kirim Kode OTP</button>
+          <button>Kembali</button>
+        </div>
+      </div>
+      <div class="otp-verification-container hide">
+        <label for="otp-code">Silahkan masukan OTP Code yg anda terima</label>
+        <input type="text" name="otp-code" id="otp-code" placeholder="OTP Code">
+        <button id="dialog-cs-btn-verif">Verifikasi</button>
+      </div>
+    </form>
+  </div>
+</dialog>

@@ -1,0 +1,82 @@
+.dialog-cs {
+  border: none;
+  background: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-cs>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 20px;
+  background: var(--linear-primary-color);
+  color: var(--inner-background-color);
+}
+
+.dialog-cs form,
+.dialog-cs .send-verification-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.dialog-cs form input {
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid var(--inner-background-color);
+  padding: 0.5em 1em;
+  color: var(--inner-background-color);
+}
+
+.dialog-cs .dialog-action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dialog-cs .dialog-action-button button,
+#dialog-cs-btn-verif {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--inner-background-color);
+  flex: 1;
+}
+
+.dialog-cs .dialog-action-button button:nth-child(1),
+#dialog-cs-btn-verif {
+  background-color: var(--primary-color);
+}
+
+.dialog-cs .dialog-action-button button:nth-child(2) {
+  background-color: var(--danger-color);
+}
+
+.dialog-cs #firebaseui-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-cs .otp-verification-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.dialog-cs .hide {
+  display: none;
+}

@@ -1,0 +1,19 @@
+@import "./components/cs-button-dialog.css";
+@import "./components/search-bar.css";
+@import "./components/dashboard-card.css";
+
+.dashboard-main-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+  gap: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .dashboard-main-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 1em;
+    }
+}

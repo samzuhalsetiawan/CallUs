@@ -1,0 +1,33 @@
+.dashboard-search-bar {
+  position: relative;
+  margin-bottom: 1.5em;
+  margin-top: 1em;
+}
+
+.dashboard-search-bar input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  background-color: var(--inner-background-color);
+  padding: 1em 2em;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1em;
+  padding-left: 4em;
+}
+
+.dashboard-search-bar svg {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(30%, -50%) scale(0.5, 0.5);
+}
+
+@media (max-width: 768px) {
+  .dashboard-search-bar {
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,18 @@
+.nav-brand-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.nav-brand-container img {
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .nav-brand-container {
+    display: none;
+  }
+}

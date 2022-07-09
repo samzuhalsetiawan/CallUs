@@ -1,0 +1,35 @@
+.nav-container .nav-list {
+  display: block;
+}
+
+.nav-button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 1em;
+  border-radius: 20px;
+  width: 100%;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: var(--text-dark-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.nav-button-active {
+  color: var(--inner-background-color);
+  background: var(--linear-primary-color);
+}
+
+.nav-button-active svg path {
+  fill: #FBFAFF;
+}
+
+@media (max-width: 768px) {
+  .nav-container .nav-list {
+    display: none;
+  }
+}

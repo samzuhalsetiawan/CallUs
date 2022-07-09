@@ -1,0 +1,127 @@
+.dashboard-main-container .card-outer-container {
+  position: relative;
+  background-color: var(--inner-background-color);
+  border-radius: 20px;
+  padding: 1em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+  height: 11rem;
+  transition: 0.3s;
+}
+
+.dashboard-main-container .card-expand {
+  height: 15rem;
+}
+
+.dashboard-main-container .card-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.dashboard-main-container .card-main-container img {
+  width: 4em;
+}
+
+.dashboard-main-container .card-main-container h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin: 0.5em 0px;
+}
+
+.dashboard-main-container .card-description {
+  display: grid;
+  grid-template-areas:
+    'cs time'
+    'user kosong';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.dashboard-main-container .card-cs {
+  grid-area: cs;
+}
+
+.dashboard-main-container .card-time {
+  grid-area: time;
+}
+
+.dashboard-main-container .card-user {
+  grid-area: user;
+}
+
+.dashboard-main-container .card-description>div {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+.dashboard-main-container .card-cs svg,
+.dashboard-main-container .card-time svg {
+  transform: scale(0.6, 0.6);
+}
+
+.dashboard-main-container .card-user svg {
+  margin: 0px 0.8em;
+  transform: scale(1.2, 1.2);
+}
+
+.dashboard-main-container .card-cs span,
+.dashboard-main-container .card-time span,
+.dashboard-main-container .card-user span {
+  font-size: 0.7em;
+}
+
+.dashboard-main-container .card-masuk-sebagai {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  transform: scaleY(0);
+  transition: 0.3s;
+  transform-origin: bottom;
+}
+
+.dashboard-main-container .card-expand .card-masuk-sebagai {
+  transform: scaleY(1);
+}
+
+.dashboard-main-container .card-masuk-sebagai button {
+  flex: 1;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  color: var(--inner-background-color);
+  background: var(--linear-primary-color);
+}
+
+@media (max-width: 768px) {
+  .dashboard-main-container .card-main-container h3 {
+    font-size: 1em;
+  }
+
+  .dashboard-main-container .card-cs svg,
+  .dashboard-main-container .card-time svg {
+    transform: scale(0.6, 0.6);
+  }
+
+  .dashboard-main-container .card-user svg {
+    margin: 0px 0.8em;
+    transform: scale(1.2, 1.2);
+  }
+
+  .dashboard-main-container .card-cs span,
+  .dashboard-main-container .card-time span,
+  .dashboard-main-container .card-user span {
+    font-size: 0.6em;
+  }
+}

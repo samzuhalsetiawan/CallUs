@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/lobby.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascript/peerjs.min.js"></script>
+    <title>CallUs</title>
+  </head>
+
+  <body>
+  <div data-instansi="<%= namaInstansi %>" class='lobby-container'>
+    <% if (kind == "c") { %>
+      <div data-cspeerid="<%= csPeerId %>" class='lobby-main-content'>
+        <% } else { %>
+          <div class='lobby-main-content'>
+            <% } %>
+            <div class="video-layer">
+              <video class='remote-video' muted>Video Tidak didukung</video>
+              <video class='local-video' muted>Video Tidak didukung</video>
+      </div>
+      <div class="chat-layer">
+        <h2>chat</h2>
+        <div id="chat-box" class="chat-box"></div>
+        <div class="tulis">
+          <div class='input-container'>
+            <input placeholder="Ketik Pesan.." type="text" id="tulis" />
+            <button id="kirim-pesan" type="submit">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="#0361FE" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="button-container">
+          <% if (kind == "cs") { %>
+            <button class="btn-next-customer">Costumer Selanjutnya</button>
+          <% } %>
+            <button class="btn-exit">Keluar Lobby</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/javascript/lobby.js"></script>
+</body>
+
+</html>

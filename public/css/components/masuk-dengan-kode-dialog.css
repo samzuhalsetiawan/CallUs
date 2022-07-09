@@ -1,0 +1,53 @@
+#masuk-dengan-kode-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: none;
+  color: var(--inner-background-color);
+}
+
+#masuk-dengan-kode-dialog form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  background: var(--linear-primary-color);
+}
+
+#masuk-dengan-kode-dialog form input {
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid var(--inner-background-color);
+  padding: 0.5em 1em;
+  color: var(--inner-background-color);
+}
+
+#masuk-dengan-kode-dialog .dialog-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#masuk-dengan-kode-dialog .dialog-button-container button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--inner-background-color);
+  flex: 1;
+}
+
+#masuk-dengan-kode-dialog .dialog-button-container button:nth-child(1) {
+  background-color: var(--primary-color);
+}
+
+#masuk-dengan-kode-dialog .dialog-button-container button:nth-child(2) {
+  background-color: var(--danger-color);
+}

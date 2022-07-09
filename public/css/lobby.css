@@ -1,0 +1,174 @@
+.lobby-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--outer-background-color);
+  min-height: 100vh;
+  max-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
+  padding: 2rem;
+}
+
+.lobby-container .lobby-main-content {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  align-items: stretch;
+  background: var(--inner-background-color);
+  border-radius: 20px;
+}
+
+.lobby-container .video-layer {
+  flex: 3;
+  position: relative;
+}
+
+.lobby-container .chat-layer {
+  flex: 1;
+}
+
+.lobby-container .remote-video {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  background: rgb(82, 79, 79);
+}
+
+.lobby-container .local-video {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  max-width: 30%;
+  max-height: 30%;
+  background: var(--text-dark-color);
+}
+
+.lobby-container .chat-layer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.lobby-container .chat-layer>* {
+  padding: 1rem 2rem;
+}
+
+.lobby-container .chat-layer h2 {
+  text-align: center;
+}
+
+.lobby-container .chat-box {
+  overflow-y: scroll;
+  height: 80%;
+  justify-self: stretch;
+}
+
+.lobby-container .chat-box::-webkit-scrollbar {
+  display: none;
+}
+
+.lobby-container .chat-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.lobby-container .my-chat {
+  justify-content: flex-end;
+}
+.lobby-container .profile-pict {
+  aspect-ratio: 1 / 1;
+  height: 3rem;
+  width: 3rem;
+  background-color: var(--secondary-dark-color);
+  border-radius: 50%;
+}
+
+.lobby-container .chat-content p {
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-dark-color);
+  border-radius: 20px;
+  text-align: justify;
+}
+
+.lobby-container .tulis {
+  padding: 1rem 2rem;
+  justify-self: flex-end;
+}
+
+.lobby-container .input-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  border: 1px solid var(--secondary-dark-color);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
+
+.lobby-container .tulis input,
+.lobby-container .tulis button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.lobby-container .tulis input {
+  flex: 6;
+}
+
+.lobby-container .tulis button {
+  flex: 1;
+  cursor: pointer;
+}
+
+.lobby-container .button-container {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1rem 2rem;
+  gap: 0.5rem;
+}
+
+.lobby-container .btn-next-customer,
+.lobby-container .btn-exit {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  background-color: var(--danger-color);
+  color: var(--inner-background-color);
+}
+
+@media (max-width: 768px) {
+  .lobby-container {
+    padding: 1rem;
+  }
+
+  .lobby-container .lobby-main-content {
+    flex-direction: column;
+  }
+
+  .lobby-container .remote-video {
+    border-radius: 20px;
+  }
+
+  .lobby-container .button-container {
+    padding-top: 0px;
+  }
+
+  .lobby-container .video-layer {
+    flex: 1;
+  }
+
+  .lobby-container .chat-layer {
+    flex: 1.2;
+  }
+}

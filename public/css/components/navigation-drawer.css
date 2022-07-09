@@ -1,0 +1,31 @@
+.main-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: -80vw;
+  width: 80vw;
+  transition: 0.3s;
+  z-index: 10;
+  border-right: 1px solid var(--primary-color);
+}
+
+.main-nav-drawer-active {
+  left: 0px;
+}
+
+@media (max-width: 768px) {
+  .main-nav-drawer {
+    display: block;
+    background: var(--outer-background-color);
+  }
+
+  .main-nav-drawer .nav-list {
+    padding: 5em 2em;
+  }
+
+  .main-nav-drawer .nav-button {
+    width: 50%;
+    min-width: fit-content;
+  }
+}

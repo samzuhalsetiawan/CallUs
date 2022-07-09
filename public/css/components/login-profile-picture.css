@@ -1,0 +1,22 @@
+.login-profile-picture {
+  height: 4em;
+  width: 4em;
+  background: var(--linear-primary-color);
+  border-radius: 50%;
+  overflow: hidden;
+  display: none;
+}
+
+.login-profile-picture img {
+  object-fit: cover;
+  width: 100%;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .login-profile-picture {
+    display: block;
+    height: 3em;
+    width: 3em;
+  }
+}

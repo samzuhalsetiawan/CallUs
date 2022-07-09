@@ -1,44 +1,17 @@
-import Antrian from "./Antrian";
-import { v4 as uuiV4 } from 'uuid';
+const { Antrian } = require("./Antrian");
+const { v4: uuidV4 } = require("uuid");
 
-export default class Costumer {
-  /**
-   * @type {string} UID
-   */
-  #uid;
-  /**
-   * @type {string}
-   */
-  #nama;
-  /**
-   * @type {string}
-   */
-  peerId;
-  /**
-   * @type {string}
-   */
-  socketId;
-  /**
-   * @type {Antrian}
-   */
-  #antrian;
+class Customer {
   /**
    * 
-   * @param {string} nama 
-   * @param {Antrian} antrian 
+   * @param {Antrian} antrian
+   * @param {string} socketId 
    */
-  constructor(nama, antrian) {
-    this.#nama = nama;
-    this.#antrian = antrian;
-    this.#uid = uuiV4();
-  }
-  getUid() {
-    return this.#uid;
-  }
-  getNama() {
-    return this.#nama;
-  }
-  getAntrian() {
-    return this.#antrian;
+  constructor(antrian, socketId) {
+    this.antrian = antrian;
+    this.id = uuidV4();
+    this.socketId = socketId;
   }
 }
+
+module.exports = { Customer }

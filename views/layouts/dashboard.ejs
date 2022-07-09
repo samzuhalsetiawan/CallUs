@@ -1,0 +1,8 @@
+<%- include('../components/search-bar') %>
+<div class="dashboard-main-container">
+
+  <% for( let index=0; index < semuaInstansi.length; index++ ) { %>
+    <%- include('../components/card-instansi', { instansi: semuaInstansi[index] }) %>
+  <% } %>
+
+</div>

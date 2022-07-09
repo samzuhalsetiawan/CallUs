@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout-with-nav.css">
+  <link rel="stylesheet" href="/css/dashbord.css">
+  <script type="module" src="/javascript/navigation.js"></script>
+  <script type="module" src="/javascript/dashboard.js"></script>
+  <title>CallUs</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <%- include('./partials/navigation-drawer.ejs'); %> 
+    <%- include('./partials/navigation.ejs'); %> 
+    <main class="main-layout">
+      <%- include('./layouts/dashboard.ejs')  %> 
+    </main>
+  </div>
+  <%- include('./components/cs-enter-email-modal.ejs'); %>
+  <script src="/javascript/fb.js"></script>
+</body>
+
+</html>

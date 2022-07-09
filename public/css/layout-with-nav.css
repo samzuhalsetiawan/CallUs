@@ -1,0 +1,33 @@
+@import "./global.css";
+@import "./navigation.css";
+
+.main-container {
+  display: flex;
+  position: relative;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 100%;
+  padding: 1em 2em;
+  gap: 2em;
+  max-height: 100vh;
+}
+
+.nav-container {
+  flex: 1;
+}
+
+.main-layout {
+  overflow-y: scroll;
+  flex: 4;
+  scrollbar-width: none;
+  /* border: 1px solid red; */
+}
+.main-layout::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+}
