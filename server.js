@@ -2,17 +2,14 @@ const express = require("express");
 const { InstansiManager } = require("./manager/InstansiManager");
 const createDummyInstansi = require("./utils/Dummy");
 const app = express();
-const fs = require("fs");
 const path = require("path");
-const cert = fs.readFileSync(path.resolve(__dirname, "cert/localhost.crt"));
-const key = fs.readFileSync(path.resolve(__dirname, "cert/localhost.decrypted.key"));
-const https = require("https");
-const server = https.createServer({ cert, key }, app);
+const http = require("http");
+const server = http.createServer(app);
 const { ExpressPeerServer } = require('peer');
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 3000;
 const peerServer = ExpressPeerServer(server, {
   debug: true,
   path: '/peerjs'
