@@ -33,14 +33,14 @@ Make sure you have this following things:
 2. Navigate to where you want to save this project
 3. Run
    ```bash
-   git clone https://github.com/samzuhalsetiawan/online-customer-service
+   git clone https://github.com/samzuhalsetiawan/CallUs
    ```
 4. Wait for downloading complete, then you can make changes to this repository
 
 Here's some example comand using CMD and save to Desktop on Windows:
 ```bash
 cd Desktop
-git clone https://github.com/samzuhalsetiawan/online-customer-service
+git clone https://github.com/samzuhalsetiawan/CallUs
 ```
 
 ## Update your local project repository
@@ -58,7 +58,7 @@ git clone https://github.com/samzuhalsetiawan/online-customer-service
 1. Open your comand prompt
 2. Navigate to inside project directory
    ```bash
-    cd online-customer-service
+    cd CallUs
    ```
 3. Make sure you already set your git username and email. if you done before, you can skip to step number 5.
 4. to configure username and email for git, run this commad:
@@ -93,7 +93,7 @@ git clone https://github.com/samzuhalsetiawan/online-customer-service
 1. Open your command prompt
 2. Navigate to repository you already clone or downloded
    ```bash
-    cd online-customer-service
+    cd CallUs
    ```
 3. Start development server by running:
    ```bash
